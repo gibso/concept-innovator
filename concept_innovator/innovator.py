@@ -7,8 +7,7 @@ bp = Blueprint('innovator', __name__, url_prefix='/innovator')
 
 @bp.route('/<domain>', methods=['GET'])
 def innovate_in(domain):
-    domain_concept = conceptnet_adapter.find(domain)
-    domain_type_concepts = conceptnet_adapter.find_two_random_types_of(domain_concept)
+    domain_type_concepts = conceptnet_adapter.find_two_random_types_of(domain)
     casl_spec = parser.create_casl_for_concepts(domain_type_concepts, domain)
     innovation_spec = blender.create_blending_for(casl_spec)
     innovation = writer.describe_spec(innovation_spec)
