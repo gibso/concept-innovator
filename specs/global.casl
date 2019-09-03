@@ -1,0 +1,37 @@
+spec Global =
+    sort Concept
+    preds   RelatedTo : Concept x Concept
+            FormOf : Concept x Concept
+            IsA : Concept x Concept
+            PartOf : Concept x Concept
+            HasA : Concept x Concept
+            UsedFor : Concept x Concept
+            CapableOf : Concept x Concept
+            AtLocation : Concept x Concept
+            Causes : Concept x Concept
+            HasSubevent : Concept x Concept
+            HasFirstSubevent : Concept x Concept
+            HasLastSubevent : Concept x Concept
+            HasPrerequisite : Concept x Concept
+            HasProperty : Concept x Concept
+            MotivatedByGoal : Concept x Concept
+            ObstructedBy : Concept x Concept
+            Desires : Concept x Concept
+            CreatedBy : Concept x Concept
+            Synonym : Concept x Concept
+            Antonym : Concept x Concept
+            DistinctFrom : Concept x Concept
+            DerivedFrom : Concept x Concept
+            SymbolOf : Concept x Concept
+            DefinedAs : Concept x Concept
+            MannerOf : Concept x Concept
+            LocatedNear : Concept x Concept
+            HasContext : Concept x Concept
+            SimilarTo : Concept x Concept
+            EtymologicallyRelatedTo : Concept x Concept
+            EtymologicallyDerivedFrom : Concept x Concept
+            CausesDesire : Concept x Concept
+            MadeOf : Concept x Concept
+            ReceivesAction : Concept x Concept
+            ExternalURL : Concept x Concept
+end

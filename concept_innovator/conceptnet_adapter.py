@@ -1,6 +1,44 @@
 import requests
 import random
 
+RELATIONS = [
+    'RelatedTo',
+    'FormOf',
+    'IsA',
+    'PartOf',
+    'HasA',
+    'UsedFor',
+    'CapableOf',
+    'AtLocation',
+    'Causes',
+    'HasSubevent',
+    'HasFirstSubevent',
+    'HasLastSubevent',
+    'HasPrerequisite',
+    'HasProperty',
+    'MotivatedByGoal',
+    'ObstructedBy',
+    'Desires',
+    'CreatedBy',
+    'Synonym',
+    'Antonym',
+    'DistinctFrom',
+    'DerivedFrom',
+    'SymbolOf',
+    'DefinedAs',
+    'MannerOf',
+    'LocatedNear',
+    'HasContext',
+    'SimilarTo',
+    'EtymologicallyRelatedTo',
+    'EtymologicallyDerivedFrom',
+    'CausesDesire',
+    'MadeOf',
+    'ReceivesAction',
+    'ExternalURL'
+]
+
+
 class Node:
     @classmethod
     def find(self, id):
@@ -22,8 +60,11 @@ def find_two_random_types_of(label):
     return list(map(lambda i: concept_types['edges'][i]['start'], random_indexes))
 
 
-def find_related_nodes_for(node, relation):
-    print(f'get "{relation}"-relations for "{node["term"]}"-node')
-    relations_to_node = requests.get(f'http://api.conceptnet.io/query?start={node["term"]}&rel={relation}').json()
-    return list(map(lambda edge: edge['end'], relations_to_node['edges']))
+def find_facts_for(concept, relation):
+    print(f'get "{relation}"-relations for "{concept}"-node')
+    relations_to_node = requests.get(f'http://api.conceptnet.io/query?start=/c/en/{concept}&rel=/r/{relation}').json()
+    return relations_to_node['edges']
 
+
+def concept_exists(concept):
+    return Node.find_by_label(concept)

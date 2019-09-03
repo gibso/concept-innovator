@@ -7,18 +7,18 @@ spec Symbols = SemSys then
   generated type Term ::= furniture | furniture | office product | furniture | eating | dining | legs | surface | kitchen | chairs | desk | four | four legs | chair | flat | dinner | eat | room | dining furniture | eating surface | place | dining room | top | eating furniture | kitchen furniture | wood | eating place | flat surface | tabulate | furniture | docket | diamond | feed | traiter | holy communion | half | bolt rope | data | facet | flat | arithmetic | multiplication | lookup table | consideration | multiplication table | discuter | backgammon | table | delineate | represent | violin | tray | mettre | gathering | array | furniture | a platform | a physical object | structured information source | furniture | object supporting furniture | a plateau | a horizontal surface | db context | generic artifact | a raised platform | a flat surface | sis logical schema | table | a piece of furniture | restaurant seating area | array | furniture | a unit of furniture | legs | Putting things on | eating off of | eat at | read | working at it | holding things | drawing on | sitting on | setting plates on | playing games | sitting around | set items on | dining | furniture | writing at it | dinner | play cards | eating off | arraying data | eating at it | sitting at | doing homework | a writing surface | holding a vase | eat | be wooden furniture | double as a desk | a kitchen | a resturant | a dining room | a conference | a demonstration | a furniture store | the corner | a house | a library | a room | an apartment | the rug | a card room | a meeting | a livingroom | a neighbor's house | the loft | the floor | a bedroom | a internet cafe | a building | the doctor | rigid | carpenter
 end
 
-spec Furniture = Symbols then
-  sort Animal
+spec Generic =
+  sort Concept
   preds
-    /r/RelatedTo : Furniture * Term
-    /r/FormOf : Furniture * Term
-    /r/IsA : Furniture * Term
-    /r/PartOf : Furniture * Term
-    /r/HasA : Furniture * Term
-    /r/UsedFor : Furniture * Term
-    /r/CapableOf : Furniture * Term
-    /r/AtLocation : Furniture * Term
-    /r/Causes : Furniture * Term
+    /r/RelatedTo : Concept * Concept
+    /r/FormOf : Concept * Concept
+    /r/IsA : Concept * Concept
+    /r/PartOf : Concept * Concept
+    /r/HasA : Concept * Concept
+    /r/UsedFor : Concept * Concept
+    /r/CapableOf : Concept * Concept
+    /r/AtLocation : Concept * Concept
+    /r/Causes : Concept * Concept
     /r/HasSubevent : Furniture * Term
     /r/HasFirstSubevent : Furniture * Term
     /r/HasLastSubevent : Furniture * Term

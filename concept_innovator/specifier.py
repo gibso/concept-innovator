@@ -1,25 +1,16 @@
 from concept_innovator import conceptnet_adapter
+import tempfile
 
-all_relations = [
-    '/r/RelatedTo',
-    '/r/FormOf',
-    '/r/IsA',
-    '/r/PartOf',
-    '/r/HasA',
-    '/r/UsedFor',
-    '/r/CapableOf',
-    '/r/AtLocation',
-    '/r/Causes',
-    '/r/HasSubevent',
-    '/r/HasFirstSubevent',
-    '/r/HasLastSubevent',
-    '/r/HasPrerequisite',
-    '/r/HasProperty',
-    '/r/MotivatedByGoal',
-    '/r/ObstructedBy',
-    '/r/Desires',
-    '/r/CreatedBy'
-]
+def specify_mental_space(mental_space):
+     local_spec = f'spec {mental_space.name} = Global then\n ops'
+
+     for concept in mental_space.involved_concepts:
+        local_spec += f'{concept} : Concept\n'
+
+     for fact in mental_space.facts:
+         local_spec += f'. {concept} : Concept\n'
+
+     return 'halodri'
 
 
 def create_casl_for_input_spaces(input_spaces, domain):
