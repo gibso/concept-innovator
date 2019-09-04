@@ -20,7 +20,7 @@ RELATIONS = [
     'ObstructedBy',
     'Desires',
     'CreatedBy',
-    'Synonym',
+    # 'Synonym',
     'Antonym',
     'DistinctFrom',
     'DerivedFrom',
@@ -35,7 +35,7 @@ RELATIONS = [
     'CausesDesire',
     'MadeOf',
     'ReceivesAction',
-    'ExternalURL'
+    # 'ExternalURL'
 ]
 
 
