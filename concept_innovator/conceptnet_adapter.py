@@ -60,7 +60,7 @@ def find_two_random_types_of(label):
     return list(map(lambda i: concept_types['edges'][i]['start'], random_indexes))
 
 
-def find_facts_for(concept, relation):
+def find_edges_for(concept, relation):
     print(f'get "{relation}"-relations for "{concept}"-node')
     relations_to_node = requests.get(f'http://api.conceptnet.io/query?start=/c/en/{concept}&rel=/r/{relation}').json()
     return relations_to_node['edges']
