@@ -2,7 +2,7 @@ from concept_innovator import conceptnet_adapter
 from concept_innovator.fact import Fact
 
 
-class MentalSpace:
+class MentalSpace(object):
 
     def __init__(self, name, facts):
         self.name = name

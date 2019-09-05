@@ -2,7 +2,7 @@ import tempfile
 from concept_innovator.mental_space import MentalSpace
 
 
-class Specification:
+class Specification(object):
 
     global_spec = open("specs/global.casl", "r").read()
 
@@ -34,6 +34,22 @@ class Specification:
         casl_file = tempfile.NamedTemporaryFile(suffix=f'-{self.name}.casl')
         casl_file.write(self.spec.encode())
         return casl_file
+
+
+class InputSpecification(Specification):
+
+    def __init__(self, input1, input2):
+        self.input1 = input1
+        self.input2 = input2
+        name = f'{input1.name}_{input2.name}'
+        local_spec = f'{input1.local_spec}\n\n{input2.local_spec}'
+        super().__init__(name, local_spec)
+
+    @classmethod
+    def from_central_concepts(cls, central_concept1, central_concept2):
+        spec1 = Specification.from_central_concept(central_concept1)
+        spec2 = Specification.from_central_concept(central_concept2)
+        return cls(spec1, spec2)
 
     # def create_casl_for_input_spaces(input_spaces, domain):
     #     f = open("innovation.casl", "w+")

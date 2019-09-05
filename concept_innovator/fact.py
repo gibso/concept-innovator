@@ -1,7 +1,7 @@
 import re
 
 
-class Fact:
+class Fact(object):
 
     def __init__(self, start, relation, end):
         self.start = start
