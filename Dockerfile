@@ -4,8 +4,8 @@ FROM python:3
 RUN mkdir /opt/project
 WORKDIR /opt/project
 
-# copy setup file
-COPY setup.py .
+# copy all files
+COPY . .
 
 # install dependencies
 RUN  pip3 install -e .
