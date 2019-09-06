@@ -1,5 +1,6 @@
 from flask import Blueprint, send_file, request
-from concept_innovator.specification import Specification, InputSpecification
+from concept_innovator.input_specification import InputSpecification
+from concept_innovator.mental_space import MentalSpace
 import json
 
 bp = Blueprint('specifier', __name__, url_prefix='/specify')
@@ -7,16 +8,14 @@ bp = Blueprint('specifier', __name__, url_prefix='/specify')
 
 @bp.route('/<concept>', methods=['GET'])
 def specify_concept(concept):
-    spec = Specification.from_central_concept(concept)
-    casl_file = spec.casl_file
+    casl_file = MentalSpace(concept).casl_file
     return send_file(casl_file.name, as_attachment=True, mimetype='text/plain')
 
 
 @bp.route('/input-spaces', methods=['POST'])
 def specify_input_spaces():
     input_space_names = json.loads(request.data)['input-space-names']
-    spec = InputSpecification.from_central_concepts(input_space_names[0], input_space_names[1])
-    casl_file = spec.casl_file
+    casl_file = InputSpecification(input_space_names).casl_file
     return send_file(casl_file.name, as_attachment=True, mimetype='text/plain')
 
 

@@ -6,6 +6,6 @@ setup(
     packages=find_packages(),
     zip_safe=False,
     install_requires=[
-        'flask', 'flask_api', 'pytest', 'requests', 'flask-cors', 'poster'
+        'flask', 'flask_api', 'pytest', 'requests', 'flask-cors'
     ],
 )
