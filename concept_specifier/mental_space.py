@@ -1,5 +1,5 @@
-from concept_innovator import conceptnet_adapter
-from concept_innovator.fact import Fact
+from concept_specifier import conceptnet_adapter
+from concept_specifier.fact import Fact
 import functools
 import tempfile
 

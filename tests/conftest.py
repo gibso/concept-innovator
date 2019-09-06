@@ -1,5 +1,5 @@
 import pytest
-from concept_innovator import create_app
+from concept_specifier import create_app
 import os
 
 

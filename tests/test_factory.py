@@ -1,4 +1,4 @@
-from concept_innovator import create_app
+from concept_specifier import create_app
 
 def test_config():
     assert not create_app().testing

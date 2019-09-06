@@ -1,4 +1,4 @@
-from concept_innovator.mental_space import MentalSpace
+from concept_specifier.mental_space import MentalSpace
 
 
 class InputSpecification(MentalSpace):
