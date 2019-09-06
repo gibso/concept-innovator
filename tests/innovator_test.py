@@ -1,9 +1,10 @@
 from flask_api import status
-import json
 
 
-def test_boat_specification(client):
-    response = client.get('/specify/boat')
+def test_concept_specification(client):
+    payload = {'concept-name': 'boat'}
+
+    response = client.post('/specify/concept', json=payload)
 
     assert response.status_code == status.HTTP_200_OK
 
