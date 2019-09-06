@@ -57,6 +57,7 @@ class MentalSpace(object):
 
     @property
     def casl_file(self):
-        casl_file = tempfile.NamedTemporaryFile(suffix=f'-{self.name}.casl')
+        casl_file = tempfile.NamedTemporaryFile(suffix=f'-{self.name}.casl', delete=False)
         casl_file.write(self.spec.encode())
+        casl_file.close()
         return casl_file
