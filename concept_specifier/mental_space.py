@@ -2,6 +2,7 @@ from concept_specifier import conceptnet_adapter
 from concept_specifier.fact import Fact
 import functools
 import tempfile
+from flask import current_app as app
 
 
 class MentalSpace(object):
@@ -12,9 +13,11 @@ class MentalSpace(object):
     @property
     @functools.lru_cache()
     def facts(self):
+        max_facts_per_relation = app.config['MAX_FACTS_PER_RELATION']
         all_edges = []
         for relation in conceptnet_adapter.RELATIONS:
             edges = conceptnet_adapter.find_edges_for(self.name, relation)
+            edges = edges[0:max_facts_per_relation] if max_facts_per_relation else edges
             all_edges.extend(edges)
         facts = list(map(lambda edge: Fact.from_edge(edge), all_edges))
         return facts
