@@ -58,8 +58,8 @@ class MentalSpace(object):
         spec = f'spec {self.name.capitalize()} = Global then\n    ops\n'
         for concept in self.involved_concepts:
             spec += f'        {concept} : Concept\n'
-        for fact in self.facts:
-            spec += f'    . {fact.relation}({fact.start},{fact.end})\n'
+        for index, fact in enumerate(self.facts):
+            spec += f'    . {fact.relation}({fact.start},{fact.end})  %(Ax-{fact.relation}{index}:p:{fact.priority})% \n'
         spec += 'end\n'
         return spec
 

@@ -26,6 +26,10 @@ class Fact(object):
         return self.__remove_id_prefix(self.edge['end']['term'])
 
     @property
+    def priority(self):
+        return int(self.edge['weight'])
+
+    @property
     def languages(self):
         languages = [self.edge['start']['language'], self.edge['end']['language']]
         # convert to set and back to list, to get unique values

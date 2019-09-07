@@ -11,9 +11,9 @@ RELATIONS = [
     'CapableOf',
     'AtLocation',
     'Causes',
-    'HasSubevent',
-    'HasFirstSubevent',
-    'HasLastSubevent',
+    # 'HasSubevent',
+    # 'HasFirstSubevent',
+    # 'HasLastSubevent',
     'HasPrerequisite',
     'HasProperty',
     'MotivatedByGoal',
@@ -21,20 +21,20 @@ RELATIONS = [
     'Desires',
     'CreatedBy',
     # 'Synonym',
-    'Antonym',
+    # 'Antonym',
     'DistinctFrom',
-    'DerivedFrom',
-    'SymbolOf',
+    # 'DerivedFrom',
+    # 'SymbolOf',
     'DefinedAs',
     'MannerOf',
     'LocatedNear',
     'HasContext',
     'SimilarTo',
-    'EtymologicallyRelatedTo',
-    'EtymologicallyDerivedFrom',
+    # 'EtymologicallyRelatedTo',
+    # 'EtymologicallyDerivedFrom',
     'CausesDesire',
-    'MadeOf',
-    'ReceivesAction',
+    'MadeOf'
+    # 'ReceivesAction',
     # 'ExternalURL'
 ]
 
@@ -61,9 +61,10 @@ def find_two_random_types_of(label):
 
 
 def find_edges_for(concept, relation):
+    concept = concept.lower()
     print(f'get "{relation}"-relations for "{concept}"-node')
-    relations_to_node = requests.get(f'http://api.conceptnet.io/query?start=/c/en/{concept}&rel=/r/{relation}').json()
-    return relations_to_node['edges']
+    response = requests.get(f'http://api.conceptnet.io/query?start=/c/en/{concept}&rel=/r/{relation}')
+    return response.json()['edges']
 
 
 def concept_exists(concept):
