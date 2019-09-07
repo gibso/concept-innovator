@@ -1,5 +1,5 @@
 from concept_specifier import conceptnet_adapter
-from concept_specifier.fact import Fact
+from concept_specifier.fact import Fact, InvalidFact
 import functools
 import tempfile
 from flask import current_app as app
@@ -13,14 +13,23 @@ class MentalSpace(object):
     @property
     @functools.lru_cache()
     def facts(self):
-        max_facts_per_relation = app.config['MAX_FACTS_PER_RELATION']
+        facts = []
+        for edge in self.related_edges:
+            try:
+                facts.append(Fact(edge))
+            except InvalidFact as error:
+                print(error)
+        return facts
+
+    @property
+    def related_edges(self):
         all_edges = []
+        max_edges_per_relation = app.config['MAX_FACTS_PER_RELATION']
         for relation in conceptnet_adapter.RELATIONS:
             edges = conceptnet_adapter.find_edges_for(self.name, relation)
-            edges = edges[0:max_facts_per_relation] if max_facts_per_relation else edges
+            edges = edges[0:max_edges_per_relation] if max_edges_per_relation else edges
             all_edges.extend(edges)
-        facts = list(map(lambda edge: Fact.from_edge(edge), all_edges))
-        return facts
+        return all_edges
 
     @property
     def involved_concepts(self):
