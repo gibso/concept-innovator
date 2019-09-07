@@ -11,4 +11,4 @@ COPY . .
 RUN  pip3 install -e .
 
 # start flask server
-CMD FLASK_APP=concept_specifier flask run --host=0.0.0.0
+CMD flask run --host=0.0.0.0

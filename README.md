@@ -55,13 +55,17 @@ Now you can reach your server at http://localhost:3000
 
 
 #### Setup without docker
-Python3 and virtualenv is required. After you created a virtual python environment for the project you can install the project requirements with 
+Python3 and virtualenv is required. Create a virtual python3 env and activate it:
+```
+virtualenv -p python3 venv && source venv/bin/activate
+```
+Now you can install the project requirements with 
 ```
 pip install -e . 
 ```
 Then you can start the flask server by running
 ```
-FLASK_APP=concept_specifier flask run
+flask run
 ```
 Now you can reach your server at http://localhost:5000 
 
