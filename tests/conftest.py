@@ -6,7 +6,9 @@ import os
 @pytest.fixture
 def app():
     app = create_app({
-        'TESTING': True
+        'TESTING': True,
+        'MAX_FACTS_PER_RELATION': 1,
+        'VALID_FACT_LANGUAGES': 'de,en'
     })
 
     yield app
