@@ -2,7 +2,6 @@ from orpheus_specifier import conceptnet_adapter
 from orpheus_specifier.fact import Fact, InvalidFact
 import functools
 import tempfile
-from flask import current_app as app
 
 
 class MentalSpace(object):
@@ -14,22 +13,13 @@ class MentalSpace(object):
     @functools.lru_cache()
     def facts(self):
         facts = []
-        for edge in self.related_edges:
+        related_edges = conceptnet_adapter.find_all_related_edges_for(self.name)
+        for edge in related_edges:
             try:
                 facts.append(Fact(edge))
             except InvalidFact as error:
                 print(error)
         return facts
-
-    @property
-    def related_edges(self):
-        all_edges = []
-        max_edges_per_relation = app.config['MAX_FACTS_PER_RELATION']
-        for relation in conceptnet_adapter.RELATIONS:
-            edges = conceptnet_adapter.find_edges_for(self.name, relation)
-            edges = edges[0:max_edges_per_relation] if max_edges_per_relation else edges
-            all_edges.extend(edges)
-        return all_edges
 
     @property
     def involved_concepts(self):

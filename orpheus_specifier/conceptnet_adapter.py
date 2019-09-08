@@ -1,5 +1,5 @@
 import requests
-import random
+from flask import current_app as app
 
 RELATIONS = [
     'RelatedTo',
@@ -39,27 +39,6 @@ RELATIONS = [
 ]
 
 
-class Node:
-    @classmethod
-    def find(self, id):
-        return requests.get(f'http://api.conceptnet.io/{id}').json()
-
-    @classmethod
-    def find_by_label(cls, label):
-        return requests.get(f'http://api.conceptnet.io/c/en/{label}').json()
-
-
-def find_two_random_types_of(label):
-    node = Node.find_by_label(label)
-
-    concept_types = requests.get(f'http://api.conceptnet.io/query?end={node["@id"]}&rel=/r/IsA').json()
-    results_count = len(concept_types['edges'])
-    random_indexes = []
-    for i in range(2):
-        random_indexes.append(random.randrange(0, results_count))
-    return list(map(lambda i: concept_types['edges'][i]['start'], random_indexes))
-
-
 def find_edges_for(concept, relation):
     concept = concept.lower()
     print(f'get "{relation}"-relations for "{concept}"-node')
@@ -67,5 +46,11 @@ def find_edges_for(concept, relation):
     return response.json()['edges']
 
 
-def concept_exists(concept):
-    return Node.find_by_label(concept)
+def find_all_related_edges_for(concept):
+    all_edges = []
+    max_edges_per_relation = app.config['MAX_FACTS_PER_RELATION']
+    for relation in RELATIONS:
+        edges = find_edges_for(concept, relation)
+        edges = edges[0:max_edges_per_relation] if max_edges_per_relation else edges
+        all_edges.extend(edges)
+    return all_edges
