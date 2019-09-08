@@ -1,6 +1,6 @@
 from flask import Blueprint, send_file, request
-from concept_specifier.input_specification import InputSpecification
-from concept_specifier.mental_space import MentalSpace
+from orpheus_specifier.input_specification import InputSpecification
+from orpheus_specifier.mental_space import MentalSpace
 import json
 
 bp = Blueprint('specifier', __name__, url_prefix='/specify')

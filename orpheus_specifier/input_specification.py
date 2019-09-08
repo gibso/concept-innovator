@@ -1,4 +1,4 @@
-from concept_specifier.mental_space import MentalSpace
+from orpheus_specifier.mental_space import MentalSpace
 
 
 class InputSpecification(MentalSpace):

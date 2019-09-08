@@ -1,5 +1,5 @@
-from concept_specifier import conceptnet_adapter
-from concept_specifier.fact import Fact, InvalidFact
+from orpheus_specifier import conceptnet_adapter
+from orpheus_specifier.fact import Fact, InvalidFact
 import functools
 import tempfile
 from flask import current_app as app

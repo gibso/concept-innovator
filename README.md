@@ -1,4 +1,4 @@
-CONCEPT SPECIFIER								
+ORPHEUS SPECIFIER								
 =================================
 
 This project is part of the [Orpheus Application](https://github.com/gibso/orpheus-dev).
@@ -36,20 +36,20 @@ The endpoint expects the input space names as json form-data, e.g:
 
 clone this project by running 
 ```
-git clone git@github.com:gibso/concept-specifier.git
+git clone git@github.com:gibso/orpheus-specifier.git
 ```
 
-and enter the directory: `cd concept-specifier`
+and enter the directory: `cd orpheus-specifier`
 
 #### Setup Using [docker](https://www.docker.com/get-started)
 Build a docker image of the project by running
 ```
-docker build -t concept-specifier .
+docker build -t orpheus-specifier .
 ```
 
 Then you can start the flask server in a docker container by running
 ```
-docker run --rm -it -p 3000:5000 concept-specifier
+docker run --rm -it -p 3000:5000 orpheus-specifier
 ```
 Now you can reach your server at http://localhost:3000 
 

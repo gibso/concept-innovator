@@ -1,5 +1,5 @@
 import pytest
-from concept_specifier import create_app
+from orpheus_specifier import create_app
 import os
 
 
