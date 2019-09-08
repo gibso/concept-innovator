@@ -1,4 +1,4 @@
-ORPHEUS SPECIFIER								
+ORPHEUS SPECIFIER [![Build Status](https://travis-ci.com/gibso/concept-specifier.svg?branch=master)](https://travis-ci.com/gibso/concept-specifier)							
 =================================
 
 This project is part of the [Orpheus Application](https://github.com/gibso/orpheus-dev).
