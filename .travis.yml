@@ -1,0 +1,10 @@
+language: generic
+
+services:
+  - docker
+
+before_script:
+  - docker build -t orpheus-specifier .
+
+script:
+  - docker run orpheus-specifier pytest
