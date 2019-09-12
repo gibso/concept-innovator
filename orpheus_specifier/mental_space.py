@@ -1,4 +1,4 @@
-from orpheus_specifier import conceptnet_adapter
+from orpheus_specifier.conceptnet_adapter import ConceptnetAdapter
 from orpheus_specifier.fact import Fact, InvalidFact
 import functools
 import tempfile
@@ -13,7 +13,7 @@ class MentalSpace(object):
     @functools.lru_cache()
     def facts(self):
         facts = []
-        related_edges = conceptnet_adapter.find_all_related_edges_for(self.name)
+        related_edges = ConceptnetAdapter.find_all_related_edges_for(self.name)
         for edge in related_edges:
             try:
                 facts.append(Fact(edge))
@@ -38,7 +38,7 @@ class MentalSpace(object):
         for concept in self.involved_concepts:
             spec += f' {concept} |'
         spec = spec[:-2] + '\n    preds\n'
-        for relation in conceptnet_adapter.RELATIONS:
+        for relation in ConceptnetAdapter.RELATIONS:
             spec += f'        {relation} : Concept * Concept\n'
         spec += 'end\n'
         return spec

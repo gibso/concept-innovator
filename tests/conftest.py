@@ -8,7 +8,8 @@ def app():
     app = create_app({
         'TESTING': True,
         'MAX_FACTS_PER_RELATION': 1,
-        'VALID_FACT_LANGUAGES': 'de,en'
+        'VALID_FACT_LANGUAGES': 'de,en',
+        'CONCEPTNET_HOST': 'api.conceptnet.io'
     })
 
     yield app
