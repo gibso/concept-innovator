@@ -7,4 +7,4 @@ before_script:
   - docker build -t orpheus-specifier .
 
 script:
-  - docker run orpheus-specifier pytest
+  - docker run --rm -e "CONCEPTNET_HOST=api.conceptnet.io" orpheus-specifier pytest
