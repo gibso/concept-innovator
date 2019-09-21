@@ -3,6 +3,8 @@ ORPHEUS SPECIFIER [![Build Status](https://travis-ci.com/gibso/orpheus-specifier
 
 This project is part of the [Orpheus Application](https://github.com/gibso/orpheus-dev).
 
+The [Orpheus Project](https://github.com/gibso/orpheus) implements a computational framework for conceptual blending with mental spaces extracted from the [ConceptNet knowledge base](https://github.com/commonsense/conceptnet5).
+
 ### Overview
 This project extracts mental spaces for concepts from the [ConceptNet](http://conceptnet.io/) knowledge base, and specifies them in the algebraic CASL language.
 
@@ -69,5 +71,9 @@ flask run
 ```
 Now you can reach your server at http://localhost:5000 
 
-### Author
-Oliver Görtz (oliver.goertz{at}gmail.com)
+
+## Author
+
+Developed by Oliver Görtz.
+
+Contact me via [GitHub](https://github.com/gibso), [XING](https://www.xing.com/profile/Oliver_Goertz9), [Facebook](https://www.facebook.com/ogoertz), [Twitter](https://twitter.com/SuperMcOli) or just write an [email](mailto:oliver.goertz@gmail.com).
